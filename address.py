@@ -1,7 +1,10 @@
 class Address:
     addresses = []
+    next_id = 1
 
     def __init__(self, street, city, postal_code):
+        self.id = Address.next_id
+        Address.next_id += 1
         self.street = street
         self.city = city
         self.postal_code = postal_code
@@ -14,7 +17,12 @@ class Address:
 
     @classmethod
     def delete(cls, address):
-        cls.addresses.remove(address)
+        for address in cls.addresses:
+            if id(address) == id(address):
+                cls.addresses.remove(address)
+                return
+        else:
+            raise ValueError("Address not found in the list.")
 
     @classmethod
     def get_all(cls):
@@ -25,7 +33,8 @@ class Address:
         for address in cls.addresses:
             if address_id == id(address):
                 return address
-        return None
+        raise ValueError("Address not found with the given ID.")
+
 
     def copy(self):
         return Address(self.street, self.city, self.postal_code)

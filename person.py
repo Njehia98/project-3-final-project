@@ -1,7 +1,10 @@
 class Person:
     people = []
+    next_id = 1
 
     def __init__(self, name, age, phone_number, payment_mode, address=None):
+        self.id = Person.next_id
+        Person.next_id += 1
         self.name = name
         self.age = age
         self.phone_number = phone_number
@@ -15,8 +18,14 @@ class Person:
         return person
 
     @classmethod
-    def delete(cls, person):
-        cls.people.remove(person)
+    def delete(cls, person_id):
+        for person in cls.people:
+            if person_id == id(person):
+                cls.people.remove(person)
+                return
+        else:
+            raise ValueError("Person not found in the list.")
+
 
     @classmethod
     def get_all(cls):
@@ -27,7 +36,8 @@ class Person:
         for person in cls.people:
             if person_id == id(person):
                 return person
-        return None
+        raise ValueError("Person not found with the given ID.")
+    
 
     def copy(self):
         return Person(self.name, self.age, self.phone_number, self.payment_mode, self.address.copy() if self.address else None)
