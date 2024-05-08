@@ -103,8 +103,9 @@ if found_person:
 else:
     print("Person not found")
 
+
 # Copying a person
-copied_person = person1.copy()
+copied_person = person2.copy()
 print(copied_person)
 
 # Searching for persons by name
