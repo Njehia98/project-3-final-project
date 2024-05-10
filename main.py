@@ -1,4 +1,4 @@
-from person import Person
+from customer import Person
 from address import Address
 
 def display_menu():
@@ -19,22 +19,33 @@ def create_person():
     age = int(input("Enter age: "))
     phone_number = input("Enter phone number: ")
     payment_mode = input("Enter payment mode: ")
-    # You may prompt for address information here if needed
-    Person = Person.create(name, age, phone_number, payment_mode)
-    print("Person created successfully.")
+    person = Person.create(name, age, phone_number, payment_mode)
+    print(f"Person created successfully. ID: {person.id}")
 
 def delete_person():
     try:
-        person_name = int(input("Enter person name to delete: "))
-        person = Person.find_by_name(person_name)
-        Person.delete(person)
-        print("Person deleted successfully.")
+        person_name = input("Enter person name to delete: ")
+        # Find person by name
+        person = None
+        for p in Person.people:
+            if p.name == person_name:
+                person = p
+                break
+        if person:
+            Person.delete(person.id)
+            print("Person deleted successfully.")
+        else:
+            print("Person not found.")
     except ValueError as e:
         print(e)
+    
 
 def display_all_people():
-    for person in Person.get_all():
-        print(person)
+    if len(Person.people) > 0:
+        for person in Person.people:
+            print(person)
+    else:
+        print("No people found.")
 
 def find_person_by_id():
     try:
@@ -46,11 +57,15 @@ def find_person_by_id():
 
 def find_person_by_name():
     try:
-        person_name = int(input("Enter person name to find: "))
-        person = Person.find_by_id(person_name)
-        print(person)
+        person_name = input("Enter person name to find: ")
+        for person in Person.people:
+            if person.name == person_name:
+                print(person)
+                return
+        print("Person not found.")
     except ValueError as e:
         print(e)
+       
 
 def create_address():
     try:
@@ -59,6 +74,7 @@ def create_address():
         postal_code = input("Enter postal code: ")
         address = Address.create(street, city, postal_code)
         print("Address created successfully.")
+        return address  
     except ValueError as e:
         print(e)
 
@@ -92,9 +108,6 @@ def search_for_addresses():
     except ValueError as e:
         print(e)
     
-
-# Similar functions for other actions related to Person and Address classes
-
 def main():
     while True:
         display_menu()
