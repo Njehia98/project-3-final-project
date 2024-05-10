@@ -1,5 +1,6 @@
 from customer import Person
 from address import Address
+from review import Review
 
 def display_menu():
     print("1. Create a person")
@@ -14,7 +15,8 @@ def display_menu():
     print("10. Find address by ID")
     print("11. Search for addresses")
     print("12. Copy Address")
-    print("13. Exit")
+    print("13. Create a review")
+    print("14. Exit")
 
 def create_person():
     name = input("Enter name: ")
@@ -124,6 +126,19 @@ def copy_address():
         print(copied_address)
     except ValueError as e:
         print(e)
+
+def create_review():
+    try:
+        person_id = int(input("Enter person ID to review: "))
+        stars = int(input("Enter rating (1-5 stars): "))
+        if stars < 1 or stars > 5:
+            print("Invalid rating. Please enter a number between 1 and 5.")
+            return
+        comment = input("Enter optional comment: ")
+        review = Review.create_review(person_id, stars, comment)
+        print("Review submitted successfully.")
+    except ValueError as e:
+        print(e)
     
 def main():
     while True:
@@ -154,6 +169,8 @@ def main():
         elif choice == "12":
             copy_address()
         elif choice == "13":
+            create_review()
+        elif choice == "14":
             print("Exiting...")
             break
         else:
