@@ -13,7 +13,8 @@ def display_menu():
     print("9. Display all addresses")
     print("10. Find address by ID")
     print("11. Search for addresses")
-    print("12. Exit")
+    print("12. Copy Address")
+    print("13. Exit")
 
 def create_person():
     name = input("Enter name: ")
@@ -78,15 +79,11 @@ def copy_person():
         print(e)
 
 def create_address():
-    try:
         street = input("Enter street: ")
         city = input("Enter city: ")
         postal_code = input("Enter postal code: ")
         address = Address.create(street, city, postal_code)
-        print("Address created successfully.")
-        return address  
-    except ValueError as e:
-        print(e)
+        print(f"Address created successfully. ID: {address.id}")
 
 def delete_address():
     try:
@@ -117,6 +114,16 @@ def search_for_addresses():
             print(address)
     except ValueError as e:
         print(e)
+
+def copy_address():
+    try:
+        address_id = int(input("Enter address ID to copy: "))
+        address = Address.find_by_id(address_id)
+        copied_address = address.copy()
+        print("Address copied successfully.")
+        print(copied_address)
+    except ValueError as e:
+        print(e)
     
 def main():
     while True:
@@ -145,6 +152,8 @@ def main():
         elif choice == "11":
             search_for_addresses()
         elif choice == "12":
+            copy_address()
+        elif choice == "13":
             print("Exiting...")
             break
         else:
