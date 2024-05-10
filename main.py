@@ -7,12 +7,13 @@ def display_menu():
     print("3. Display all people")
     print("4. Find person by ID")
     print("5. Find person by name")
-    print("6. Create an address")
-    print("7. Delete an address")
-    print("8. Display all addresses")
-    print("9. Find address by ID")
-    print("10. Search for addresses")
-    print("11. Exit")
+    print("6. Copy person")
+    print("7. Create an address")
+    print("8. Delete an address")
+    print("9. Display all addresses")
+    print("10. Find address by ID")
+    print("11. Search for addresses")
+    print("12. Exit")
 
 def create_person():
     name = input("Enter name: ")
@@ -25,7 +26,6 @@ def create_person():
 def delete_person():
     try:
         person_name = input("Enter person name to delete: ")
-        # Find person by name
         person = None
         for p in Person.people:
             if p.name == person_name:
@@ -65,7 +65,17 @@ def find_person_by_name():
         print("Person not found.")
     except ValueError as e:
         print(e)
-       
+
+
+def copy_person():
+    try:
+        person_id = int(input("Enter person ID to copy: "))
+        person = Person.find_by_id(person_id)
+        copied_person = person.copy()
+        print("Person copied successfully.")
+        print(copied_person)
+    except ValueError as e:
+        print(e)
 
 def create_address():
     try:
@@ -123,16 +133,18 @@ def main():
         elif choice == "5":
             find_person_by_name()
         elif choice == "6":
-            create_address()
+            copy_person()
         elif choice == "7":
-            delete_address()
+            create_address()
         elif choice == "8":
-            display_all_addresses()
+            delete_address()
         elif choice == "9":
-            find_address_by_id()
+            display_all_addresses()
         elif choice == "10":
-            search_for_addresses()
+            find_address_by_id()
         elif choice == "11":
+            search_for_addresses()
+        elif choice == "12":
             print("Exiting...")
             break
         else:
