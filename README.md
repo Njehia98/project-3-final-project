@@ -1,5 +1,7 @@
 # project-3-final-project
-This is a Command Line Delivery Application where a customer gives his or her details i.e Name, Age, Contact and Address and gives a rating with an optional comment. The application includes Python ORM methods i.e create, delete, search, copy, display. There is one-to-many relationship between customer.py and address.py and review.py
+This is a Command Line Delivery Application where a customer gives his or her details i.e Name, Age, Contact and Address and gives a rating with an optional comment. The application includes Python ORM methods i.e create, delete, search, copy, display. There is one-to-many relationship between customer.py and address.py and review.py. 
+I have a database created using psql to store and manage my customer's data.
+The application is interactive and stimulates user participation. Instructions, and a menu will be displayed. The menu is really straightforward and self-explanatory. Each instruction from the menu will provide a response on the same command line interface, depending on whether data is returned from the instruction or an error occurs during its execution. The application can also be exited by following the straightforward menu instruction.
 
 
 
@@ -29,7 +31,7 @@ This is a Command Line Delivery Application where a customer gives his or her de
 
 
 # Installation
-1. Clone the repository to your local machine 
+1.Fork and Clone the repository to your local machine to get your own copy.
 ```
 git@github.com:Njehia98/project-3-final-project.git
 
@@ -38,6 +40,12 @@ git@github.com:Njehia98/project-3-final-project.git
 ```
 cd delivery-system
 ```
+
+# Tools
+1. python3
+2. psql- My RDBMS (Relational Database Management System)
+3. psycopg2
+
 
 # Usage
 1. Run main.py
@@ -48,4 +56,15 @@ cd delivery-system
 Contributions are welcome! Please feel free to submit pull requests or open issues if you encounter any problems or have suggestions for improvements.
 
 # License
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License
+
+Copyright (c) [2024]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# Author
+Stacy Njehia.

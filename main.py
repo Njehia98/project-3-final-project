@@ -1,6 +1,8 @@
-from customer import Person
-from address import Address
-from review import Review
+from models.customer import Person
+from models.address import Address
+from models.review import Review
+import psycopg2
+
 
 def display_menu():
     print("1. Create a person")
@@ -178,3 +180,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
